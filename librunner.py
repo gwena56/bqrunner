@@ -14,7 +14,6 @@ class device:
             self.sock.connect(self.server_address)
         except socket.error, e:
             print  >>sys.stderr, 'Connection refused or mobile not connected.'
-            #raise e
             exit(0)
         return 
     def close(self):
