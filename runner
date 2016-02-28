@@ -1,0 +1,41 @@
+#!/usr/bin/python2.7
+import socket
+import sys
+import shlex, subprocess
+import os
+import re
+
+def interpretor(action):
+    args = shlex.split(action)
+    try:
+        subprocess.check_output(args).split()
+    except Exception, e:
+        return "<1>"
+    return "<0>"
+
+# Create a TCP/IP socket
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# Bind the socket to the port
+server_address = ('0.0.0.0', 5656)
+sock.bind(server_address)
+# Listen for incoming connections
+sock.listen(1)
+
+while True:
+    # Wait for a connection
+    connection, client_address = sock.accept()
+    try:
+        # Receive the data in small chunks and retransmit it
+        while True:
+            data = connection.recv(255)
+            if data:
+                print >>sys.stderr, client_address, ' to phone->', data
+                if interpretor(data) != "<1>":
+                    connection.sendall("<201>")
+                else:
+                    connection.sendall("<1>")
+            else:
+                break
+    finally:
+        # Clean up the connection
+        connection.close()

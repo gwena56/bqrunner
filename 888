@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+import librunner as uphone
+BQ = uphone.device() # runner daemon sur le BQ
+BQ.ip('192.168.1.67',5656)
+BQ.connect()
+BQ.send('/usr/share/ofono/scripts/dial-number 888')
+BQ.close()
