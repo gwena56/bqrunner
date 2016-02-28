@@ -1,5 +1,7 @@
 # bqrunner
+
 These are some scripts to test sending commands threw Wifi to an Aquaris BQ 4.5
+
 - runner
     - put this file on the ubuntu phone this is command server via usb at /home/phablet/Documents/
     - edit rc.local and add python /home/phablet/Documents/runner &
