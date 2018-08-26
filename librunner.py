@@ -207,7 +207,7 @@ class server(object):
             if self.userdefs.has_key(args[1]):
                 ff = self.quoifaire()
                 self.quoifaire.fonct = self.userdefs[args[1]]
-                ff.fonct()
+                ff.fonct(50,50)
                 return '<3>'
             else:
                 return '<1>'
