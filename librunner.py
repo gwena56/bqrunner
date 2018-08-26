@@ -207,7 +207,7 @@ class server(object):
             if self.userdefs.has_key(args[1]):
                 ff = self.quoifaire()
                 self.quoifaire.fonct = self.userdefs[args[1]]
-                ff.fonct(50,50)
+                ff.fonct()
                 return '<3>'
             else:
                 return '<1>'
@@ -215,7 +215,7 @@ class server(object):
         if self.ENCODE == False:
             return texte
         else:
-         return base64.encodestring(texte)
+            return base64.encodestring(texte)
     def attribAdd(self,fct,extFct):
         if self.DEBUG == 1:
             print 'New server atribution created as ',fct,' memory instance ',extFct
